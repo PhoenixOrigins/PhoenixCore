@@ -1,0 +1,12 @@
+name: PhoenixCore
+author: jstnf
+version: 1.0-SNAPSHOT
+main: com.phoenixorigins.PhoenixCore
+
+softdepend: [WorldGuard, Towny]
+
+api-version: 1.13
+
+commands:
+  phoenixcore:
+    description: PhoenixCore main command.
