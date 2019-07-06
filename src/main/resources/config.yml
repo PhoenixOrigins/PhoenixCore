@@ -1,0 +1,36 @@
+#     ____  __                     _      ______
+#    / __ \/ /_  ____  ___  ____  (_)  __/ ____/___  ________
+#   / /_/ / __ \/ __ \/ _ \/ __ \/ / |/_/ /   / __ \/ ___/ _ \  by jstnf
+#  / ____/ / / / /_/ /  __/ / / / />  </ /___/ /_/ / /  /  __/  Configuration File
+# /_/   /_/ /_/\____/\___/_/ /_/_/_/|_|\____/\____/_/   \___/   config.yml
+
+# Which server is this plugin being used on?
+# This will determine the output of certain commands such as /rules or /help
+server: survival
+
+# Locale to be used by PhoenixCore
+locale: en_US
+
+# Custom commands to be displayed per-server
+# 0 - Disable command
+# 1 - Fake unknown command
+# 2 - Enable command (uses custom text)
+commands:
+  donate: 0
+  help: 0
+  vote: 0
+  website: 0
+
+features:
+  # Should night vision features be enabled?
+  # Permission: phoenixcore.nv, phoenixcore.nvlist, phoenixcore.nvnotify
+  night-vision: false
+
+  # Should the tripwire duplication glitch be checked for?
+  # Duplication check looks for non-cancelled tripwire block break events
+  # and immediately sets the block to air.
+  tripwire-dupe-check: false
+
+do-not-change-this-value:
+  # Do not change this value!
+  config-version: 1

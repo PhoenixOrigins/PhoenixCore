@@ -1,4 +1,4 @@
-package com.phoenixorigins.listeners;
+package com.phoenixorigins.tripwire;
 
 import com.phoenixorigins.PhoenixCore;
 import org.bukkit.Bukkit;
@@ -20,20 +20,14 @@ public class TripwireBreakListener implements Listener
 		this.plugin = plugin;
 	}
 
-	@EventHandler(priority = EventPriority.HIGHEST)
+	@EventHandler(priority = EventPriority.HIGH)
 	public void onBlockBreak(final BlockBreakEvent e)
 	{
 		if (e.getBlock().getBlockData().getMaterial() == Material.TRIPWIRE)
 		{
 			if (!e.isCancelled())
 			{
-				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable()
-				{
-					public void run()
-					{
-						e.getBlock().setType(Material.AIR);
-					}
-				});
+				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> e.getBlock().setType(Material.AIR));
 			}
 		}
 	}

@@ -1,0 +1,35 @@
+#     ____  __                     _      ______
+#    / __ \/ /_  ____  ___  ____  (_)  __/ ____/___  ________
+#   / /_/ / __ \/ __ \/ _ \/ __ \/ / |/_/ /   / __ \/ ___/ _ \  by jstnf
+#  / ____/ / / / /_/ /  __/ / / / />  </ /___/ /_/ / /  /  __/  Localization File
+# /_/   /_/ /_/\____/\___/_/ /_/_/_/|_|\____/\____/_/   \___/   en_US.yml
+
+phoenixcore:
+  prefix: "&8[&c&lPhoenix&fCore&8]&f "
+  command-disabled: "&cThis command is disabled!"
+  feature-disabled: "&cThis feature is disabled!"
+  must-be-player: "&cYou must be a player to execute this command!"
+  feature-not-implemented: "&cThis feature is currently not implemented!"
+
+  nightvision:
+    on: "&fNight vision has been toggled &aON&f!"
+    off: "&fNight vision has been toggled &cOFF&f!"
+    already-on: "&cYou already have night vision on!"
+    already-off: "&cYou already have night vision off!"
+    list: "&fThe following players have night vision:"
+    players: "&fPlayers: "
+    no-players: "&fNo players have night vision!"
+    notify-on: "&f{0} toggled night vision &aON&f!"
+    notify-off: "&f{0} toggled night vision &cOFF&f!"
+    no-permission-toggle: "&cYou do not have permission to toggle night vision!"
+    no-permission-list: "&cYou do not have permission to list players with night vision!"
+    invalid-subcommand: "&cInvalid subcommand. &fUse &b/nv help &ffor command help."
+    help-header: "&cPhoenix&3NightVision &fCommand Help"
+    help: "&3/nv&f - Toggle night vision on and off."
+    help-on: "&3/nv on&f - Toggle night vision on."
+    help-off: "&3/nv off&f - Toggle night vision off."
+    help-list: "&3/nvlist&f - List all players with night vision on."
+
+do-not-change-this-value:
+  # Do not change this value!
+  locale-version: 1

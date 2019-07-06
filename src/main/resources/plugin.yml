@@ -1,12 +1,46 @@
 name: PhoenixCore
 author: jstnf
-version: 1.0-SNAPSHOT
+version: 0.1.0
 main: com.phoenixorigins.PhoenixCore
 
-softdepend: [WorldGuard, Towny]
+softdepend: [WorldGuard, Towny, LuckPerms]
 
 api-version: 1.13
 
 commands:
   phoenixcore:
+    aliases: [pc]
     description: PhoenixCore main command.
+  discord:
+    description: Display the discord site.
+  donate:
+    description: Display donation site.
+  help:
+    description: Display command help for the server.
+  nv:
+    aliases: [nightvision]
+    description: Toggle night vision on and off.
+  nvlist:
+    description: View all users with night vision active.
+  vote:
+    description: Display vote sites.
+  website:
+    description: Display the website.
+
+permissions:
+  phoenixcore.discord:
+    description: Allow use of /discord.
+  phoenixcore.donate:
+    description: Allow use of /donate.
+  phoenixcore.help:
+    description: Allow use of /help.
+  phoenixcore.nv:
+    description: Allow toggling of night vision.
+  phoenixcore.nvlist:
+    description: Allow listing of all players with night vision.
+  phoenixcore.nvnotify:
+    description: Get a notification in chat when someone toggles night vision.
+  phoenixcore.vote:
+    description: Allow use of /vote.
+  phoenixcore.website:
+    description: Allow use of /website.
