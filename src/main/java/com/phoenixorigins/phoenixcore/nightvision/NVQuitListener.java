@@ -1,6 +1,6 @@
-package com.phoenixorigins.nightvision;
+package com.phoenixorigins.phoenixcore.nightvision;
 
-import com.phoenixorigins.PhoenixCore;
+import com.phoenixorigins.phoenixcore.PhoenixCore;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

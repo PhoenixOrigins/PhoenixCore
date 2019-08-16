@@ -1,7 +1,7 @@
 name: PhoenixCore
 author: jstnf
 version: 0.1.0
-main: com.phoenixorigins.PhoenixCore
+main: com.phoenixorigins.phoenixcore.PhoenixCore
 
 softdepend: [WorldGuard, Towny, LuckPerms]
 
@@ -17,11 +17,15 @@ commands:
     description: Display donation site.
   help:
     description: Display command help for the server.
+  launchpure:
+    description: Away he goes...
   nv:
     aliases: [nightvision]
     description: Toggle night vision on and off.
   nvlist:
     description: View all users with night vision active.
+  togglelaunchpure:
+    description: Toggle the madness.
   vote:
     description: Display vote sites.
   website:
@@ -34,6 +38,10 @@ permissions:
     description: Allow use of /donate.
   phoenixcore.help:
     description: Allow use of /help.
+  phoenixcore.launchpure.launch:
+    description: Bypass the launchpure toggle.
+  phoenixcore.launchpure.toggle:
+    description: Allow toggling launchpure.
   phoenixcore.nv:
     description: Allow toggling of night vision.
   phoenixcore.nvlist:

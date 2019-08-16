@@ -1,18 +1,21 @@
-package com.phoenixorigins;
+package com.phoenixorigins.phoenixcore;
 
-import com.phoenixorigins.commands.DonateCmd;
-import com.phoenixorigins.commands.HelpCmd;
-import com.phoenixorigins.commands.WebsiteCmd;
-import com.phoenixorigins.config.PCLocale;
-import com.phoenixorigins.nightvision.NVCmd;
-import com.phoenixorigins.nightvision.NVListCmd;
-import com.phoenixorigins.commands.PhoenixCoreCmd;
-import com.phoenixorigins.commands.VoteCmd;
-import com.phoenixorigins.config.PCConfig;
-import com.phoenixorigins.config.PCSettings;
-import com.phoenixorigins.nightvision.NVQuitListener;
-import com.phoenixorigins.nightvision.NightVisionTask;
-import com.phoenixorigins.tripwire.TripwireBreakListener;
+import com.phoenixorigins.phoenixcore.commands.DonateCmd;
+import com.phoenixorigins.phoenixcore.commands.HelpCmd;
+import com.phoenixorigins.phoenixcore.commands.WebsiteCmd;
+import com.phoenixorigins.phoenixcore.commands.launchpure.LaunchpureCmd;
+import com.phoenixorigins.phoenixcore.commands.launchpure.TogglelaunchpureCmd;
+import com.phoenixorigins.phoenixcore.config.PCLocale;
+import com.phoenixorigins.phoenixcore.commands.nightvision.NVCmd;
+import com.phoenixorigins.phoenixcore.commands.nightvision.NVListCmd;
+import com.phoenixorigins.phoenixcore.commands.PhoenixCoreCmd;
+import com.phoenixorigins.phoenixcore.commands.VoteCmd;
+import com.phoenixorigins.phoenixcore.config.PCConfig;
+import com.phoenixorigins.phoenixcore.config.PCSettings;
+import com.phoenixorigins.phoenixcore.launchpure.Launchpure;
+import com.phoenixorigins.phoenixcore.nightvision.NVQuitListener;
+import com.phoenixorigins.phoenixcore.nightvision.NightVisionTask;
+import com.phoenixorigins.phoenixcore.tripwire.TripwireBreakListener;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,6 +30,8 @@ public class PhoenixCore extends JavaPlugin
 	private boolean nvEnabled;
 	private NightVisionTask task;
 	public HashMap<String, Player> nightVisionPlayers;
+
+	private Launchpure module;
 
 	public PhoenixCore()
 	{
@@ -46,6 +51,10 @@ public class PhoenixCore extends JavaPlugin
 
 		nvEnabled = getMainConfig()
 				.getBoolean(PCSettings.NIGHT_VISION.getPath(), (boolean) PCSettings.NIGHT_VISION.getDefault());
+
+		/* launchpure */
+		boolean launchpureEnabled = getMainConfig().getBoolean(PCSettings.LAUNCHPURE.getPath(), (boolean) PCSettings.LAUNCHPURE.getDefault());
+		module = new Launchpure(launchpureEnabled);
 
 		/* Register commands */
 		if (!registerCommands())
@@ -121,11 +130,13 @@ public class PhoenixCore extends JavaPlugin
 		try
 		{
 			getCommand("phoenixcore").setExecutor(new PhoenixCoreCmd(this));
-			getCommand("donate").setExecutor(new DonateCmd(this));
-			getCommand("help").setExecutor(new HelpCmd(this));
+			getCommand("commands/donate").setExecutor(new DonateCmd(this));
+			getCommand("commands/help").setExecutor(new HelpCmd(this));
+			getCommand("launchpure").setExecutor(new LaunchpureCmd(this, module));
 			getCommand("nv").setExecutor(new NVCmd(this, nvEnabled));
 			getCommand("nvlist").setExecutor(new NVListCmd(this, nvEnabled));
-			getCommand("vote").setExecutor(new VoteCmd(this));
+			getCommand("togglelaunchpure").setExecutor(new TogglelaunchpureCmd(module));
+			getCommand("commands/vote").setExecutor(new VoteCmd(this));
 			getCommand("website").setExecutor(new WebsiteCmd(this));
 		}
 		catch (Exception e)

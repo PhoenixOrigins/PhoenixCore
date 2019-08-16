@@ -1,6 +1,6 @@
-package com.phoenixorigins.config;
+package com.phoenixorigins.phoenixcore.config;
 
-import com.phoenixorigins.PhoenixCore;
+import com.phoenixorigins.phoenixcore.PhoenixCore;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.BufferedReader;
@@ -257,9 +257,9 @@ public class PCConfig
 		ArrayList<File> folders = new ArrayList<File>();
 
 		folders.add(plugin.getDataFolder());
-		folders.add(new File(plugin.getDataFolder() + File.separator + "donate"));
-		folders.add(new File(plugin.getDataFolder() + File.separator + "help"));
-		folders.add(new File(plugin.getDataFolder() + File.separator + "vote"));
+		folders.add(new File(plugin.getDataFolder() + File.separator + "commands/donate"));
+		folders.add(new File(plugin.getDataFolder() + File.separator + "commands/help"));
+		folders.add(new File(plugin.getDataFolder() + File.separator + "commands/vote"));
 
 		for (File folder : folders)
 		{

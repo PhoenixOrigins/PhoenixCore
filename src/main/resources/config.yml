@@ -31,6 +31,10 @@ features:
   # and immediately sets the block to air.
   tripwire-dupe-check: false
 
+  # Should launchpure be enabled?
+  # Permissions: phoenixcore.launchpure.launch, phoenixcore.launchpure.toggle
+  launchpure: false
+
 do-not-change-this-value:
   # Do not change this value!
   config-version: 1

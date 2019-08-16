@@ -1,7 +1,7 @@
-package com.phoenixorigins.nightvision;
+package com.phoenixorigins.phoenixcore.commands.nightvision;
 
-import com.phoenixorigins.PhoenixCore;
-import com.phoenixorigins.config.PCLocale;
+import com.phoenixorigins.phoenixcore.PhoenixCore;
+import com.phoenixorigins.phoenixcore.config.PCLocale;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -51,6 +51,7 @@ public class NVCmd implements CommandExecutor
 						player.removePotionEffect(PotionEffectType.NIGHT_VISION);
 						plugin.nightVisionPlayers.remove(username);
 						player.sendMessage(plugin.getMessage(PCLocale.NIGHTVISION_OFF, true));
+						notify(sender, false);
 					}
 					else
 					{
@@ -58,6 +59,7 @@ public class NVCmd implements CommandExecutor
 						player.addPotionEffect(
 								new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 0, true, false));
 						player.sendMessage(plugin.getMessage(PCLocale.NIGHTVISION_ON, true));
+						notify(sender, true);
 					}
 					break;
 				case 1:
@@ -72,8 +74,10 @@ public class NVCmd implements CommandExecutor
 							{
 								plugin.nightVisionPlayers.put(username, player);
 								player.addPotionEffect(
-										new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 0, true, false));
+										new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 0, true,
+												false));
 								player.sendMessage(plugin.getMessage(PCLocale.NIGHTVISION_ON, true));
+								notify(sender, true);
 							}
 							break;
 						case "off":
@@ -87,9 +91,10 @@ public class NVCmd implements CommandExecutor
 								player.removePotionEffect(PotionEffectType.NIGHT_VISION);
 								plugin.nightVisionPlayers.remove(username);
 								player.sendMessage(plugin.getMessage(PCLocale.NIGHTVISION_OFF, true));
+								notify(sender, false);
 							}
 							break;
-						case "help":
+						case "commands/help":
 							break;
 						default:
 							player.sendMessage(plugin.getMessage(PCLocale.NIGHTVISION_INVALID_SUBCOMMAND, true));
@@ -106,5 +111,23 @@ public class NVCmd implements CommandExecutor
 			sender.sendMessage(plugin.getMessage(PCLocale.NIGHTVISION_NO_PERMISSION_TOGGLE, true));
 		}
 		return true;
+	}
+
+	public void notify(CommandSender sender, boolean nvOn)
+	{
+		for (Player p : plugin.getServer().getOnlinePlayers())
+		{
+			if (p.hasPermission("phoenixcore.nvnotify"))
+			{
+				if (nvOn)
+				{
+					p.sendMessage(plugin.getMessage(PCLocale.NIGHTVISION_NOTIFY_ON, true, sender.getName()));
+				}
+				else
+				{
+					p.sendMessage(plugin.getMessage(PCLocale.NIGHTVISION_NOTIFY_OFF, true, sender.getName()));
+				}
+			}
+		}
 	}
 }

@@ -1,7 +1,7 @@
-package com.phoenixorigins.commands;
+package com.phoenixorigins.phoenixcore.commands;
 
-import com.phoenixorigins.PhoenixCore;
-import com.phoenixorigins.config.PCSettings;
+import com.phoenixorigins.phoenixcore.PhoenixCore;
+import com.phoenixorigins.phoenixcore.config.PCSettings;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

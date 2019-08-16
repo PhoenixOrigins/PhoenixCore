@@ -1,4 +1,4 @@
-package com.phoenixorigins.config;
+package com.phoenixorigins.phoenixcore.config;
 
 import org.bukkit.ChatColor;
 
@@ -14,7 +14,7 @@ public enum PCLocale
 	NIGHTVISION_ALREADY_ON("phoenixcore.nightvision.already-on", "&cYou already have night vision on!"),
 	NIGHTVISION_ALREADY_OFF("phoenixcore.nightvision.already-off", "&cYou already have night vision off!"),
 	NIGHTVISION_LIST("phoenixcore.nightvision.list", "&fThe following players have night vision:"),
-	NIGHTVISION_PLAYERS("phoenixcore.nightvision.players", "&fPlayers: "),
+	NIGHTVISION_PLAYERS("phoenixcore.nightvision.players", "&fPlayers: {0}"),
 	NIGHTVISION_NO_PLAYERS("phoenixcore.nightvision.no-players", "&fNo players have night vision!"),
 	NIGHTVISION_NOTIFY_ON("phoenixcore.nightvision.notify-on", "&f{0} toggled night vision &aON&f!"),
 	NIGHTVISION_NOTIFY_OFF("phoenixcore.nightvision.notify-off", "&f{0} toggled night vision &cOFF&f!"),

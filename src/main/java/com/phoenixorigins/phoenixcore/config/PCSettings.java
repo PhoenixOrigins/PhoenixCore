@@ -1,4 +1,4 @@
-package com.phoenixorigins.config;
+package com.phoenixorigins.phoenixcore.config;
 
 public enum PCSettings
 {
@@ -10,6 +10,7 @@ public enum PCSettings
 	COMMANDS_WEBSITE("commands.website", 0),
 	NIGHT_VISION("features.night-vision", false),
 	TRIPWIRE_DUPE_CHECK("features.tripwire-dupe-check", false),
+	LAUNCHPURE("features.launchpure.enabled", false),
 	CONFIG_VERSION("do-not-change-this-value.config-version", 1);
 
 	private String path;

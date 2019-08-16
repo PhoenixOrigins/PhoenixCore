@@ -17,7 +17,7 @@ phoenixcore:
     already-on: "&cYou already have night vision on!"
     already-off: "&cYou already have night vision off!"
     list: "&fThe following players have night vision:"
-    players: "&fPlayers: "
+    players: "&fPlayers: {0}"
     no-players: "&fNo players have night vision!"
     notify-on: "&f{0} toggled night vision &aON&f!"
     notify-off: "&f{0} toggled night vision &cOFF&f!"
@@ -29,6 +29,9 @@ phoenixcore:
     help-on: "&3/nv on&f - Toggle night vision on."
     help-off: "&3/nv off&f - Toggle night vision off."
     help-list: "&3/nvlist&f - List all players with night vision on."
+
+  launchpure:
+    null: "test"
 
 do-not-change-this-value:
   # Do not change this value!

@@ -1,6 +1,6 @@
-package com.phoenixorigins.tripwire;
+package com.phoenixorigins.phoenixcore.tripwire;
 
-import com.phoenixorigins.PhoenixCore;
+import com.phoenixorigins.phoenixcore.PhoenixCore;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
