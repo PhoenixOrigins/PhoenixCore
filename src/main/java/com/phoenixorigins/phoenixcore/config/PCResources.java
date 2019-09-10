@@ -1,10 +1,8 @@
 package com.phoenixorigins.phoenixcore.config;
 
-import com.phoenixorigins.phoenixcore.PhoenixCore;
-
 import java.io.File;
 
-public class FileManager
+public class PCResources
 {
 	public static boolean generateFilesFromResources()
 	{

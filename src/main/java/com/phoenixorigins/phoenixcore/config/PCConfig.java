@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 public class PCConfig
 {
-	private final int CONFIG_VERSION = (int) PCSettings.CONFIG_VERSION.getDefault();
-	private final int LOCALE_VERSION = (int) PCLocale.LOCALE_VERSION.getDefault();
+	private final int CONFIG_VERSION = (int) PCSettings.CONFIG_VERSION.def();
+	private final int LOCALE_VERSION = (int) PCLocale.LOCALE_VERSION.def();
 	private PhoenixCore plugin;
 	private File mainConfigFile, langConfigFile;
 	private YamlConfiguration main, lang;
@@ -35,7 +35,7 @@ public class PCConfig
 		generateFolders();
 		if (generateMainConfig())
 		{
-			loadedLocale = main.getString(PCSettings.LOCALE.getPath(), (String) PCSettings.LOCALE.getDefault());
+			loadedLocale = main.getString(PCSettings.LOCALE.path(), (String) PCSettings.LOCALE.def());
 			return generateLangConfig();
 		}
 		return false;
@@ -53,10 +53,10 @@ public class PCConfig
 
 	public String getMessage(PCLocale message, boolean usePrefix, String... args)
 	{
-		String toReturn = PCLocale.format(lang.getString(message.getPath(), (String) message.getDefault()), args);
+		String toReturn = PCLocale.format(lang.getString(message.path(), (String) message.def()), args);
 		if (usePrefix)
 		{
-			toReturn = PCLocale.format(lang.getString(PCLocale.PREFIX.getPath(), (String) PCLocale.PREFIX.getDefault())) + toReturn;
+			toReturn = PCLocale.format(lang.getString(PCLocale.PREFIX.path(), (String) PCLocale.PREFIX.def())) + toReturn;
 		}
 		return toReturn;
 	}
@@ -99,12 +99,11 @@ public class PCConfig
 			{
 				/* Match config version */
 				main.load(mainConfigFile);
-				int currentConfigVersion = main.getInt(PCSettings.CONFIG_VERSION.getPath(), 0);
+				int currentConfigVersion = main.getInt(PCSettings.CONFIG_VERSION.path(), 0);
 				if (currentConfigVersion != CONFIG_VERSION)
 				{
 					/* Uh oh! The config version does not match! */
-					plugin.getLogger().warning("Your config version (" + currentConfigVersion
-							+ ") does not match the current config version (" + CONFIG_VERSION + ").");
+					plugin.getLogger().warning("Your config version (" + currentConfigVersion + ") does not match the current config version (" + CONFIG_VERSION + ").");
 					plugin.getLogger().warning("Your current configuration will be saved to config.yml.backup.");
 
 					/* Begin config backup */
@@ -201,20 +200,17 @@ public class PCConfig
 			{
 				/* Match locale version */
 				lang.load(langConfigFile);
-				int currentConfigVersion = lang.getInt(PCLocale.LOCALE_VERSION.getPath(), 0);
+				int currentConfigVersion = lang.getInt(PCLocale.LOCALE_VERSION.path(), 0);
 				if (currentConfigVersion != LOCALE_VERSION)
 				{
 					/* Uh oh! The locale version does not match! */
-					plugin.getLogger().warning("Your locale version (" + currentConfigVersion
-							+ ") does not match the current locale version (" + LOCALE_VERSION + ").");
-					plugin.getLogger()
-							.warning("Your current configuration will be saved to " + loadedLocale + ".yml.backup.");
+					plugin.getLogger().warning("Your locale version (" + currentConfigVersion + ") does not match the current locale version (" + LOCALE_VERSION + ").");
+					plugin.getLogger().warning("Your current configuration will be saved to " + loadedLocale + ".yml.backup.");
 
 					/* Begin locale backup */
 					plugin.getLogger().info("Commencing backup...");
 
-					File backup = new File(plugin.getDataFolder() + File.separator + "locales",
-							loadedLocale + ".yml.backup");
+					File backup = new File(plugin.getDataFolder() + File.separator + "locales", loadedLocale + ".yml.backup");
 					backup.createNewFile();
 
 					BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(mainConfigFile)));
@@ -244,7 +240,7 @@ public class PCConfig
 				/* Something went wrong loading the locale! */
 				e.printStackTrace();
 				plugin.getLogger().severe("Could not load locale files.");
-				plugin.getLogger().severe("InfinityWarps will now be disabled.");
+				plugin.getLogger().severe("PhoenixCore will now be disabled.");
 				plugin.getServer().getPluginManager().disablePlugin(plugin);
 				return false;
 			}
@@ -257,9 +253,12 @@ public class PCConfig
 		ArrayList<File> folders = new ArrayList<File>();
 
 		folders.add(plugin.getDataFolder());
-		folders.add(new File(plugin.getDataFolder() + File.separator + "commands/donate"));
-		folders.add(new File(plugin.getDataFolder() + File.separator + "commands/help"));
-		folders.add(new File(plugin.getDataFolder() + File.separator + "commands/vote"));
+		folders.add(new File(plugin.getDataFolder() + File.separator + "commands"));
+		folders.add(new File(plugin.getDataFolder() + File.separator + "commands" + File.separator + "discord"));
+		folders.add(new File(plugin.getDataFolder() + File.separator + "commands" + File.separator + "donate"));
+		folders.add(new File(plugin.getDataFolder() + File.separator + "commands" + File.separator + "help"));
+		folders.add(new File(plugin.getDataFolder() + File.separator + "commands" + File.separator + "vote"));
+		folders.add(new File(plugin.getDataFolder() + File.separator + "commands" + File.separator + "website"));
 
 		for (File folder : folders)
 		{

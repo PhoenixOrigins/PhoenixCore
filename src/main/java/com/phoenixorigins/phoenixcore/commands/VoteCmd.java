@@ -18,7 +18,7 @@ public class VoteCmd implements CommandExecutor
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
 	{
-		sender.sendMessage(plugin.getMessage(PCLocale.FEATURE_NOT_IMPLEMENTED, true));
+		sender.sendMessage(plugin.msg(PCLocale.FEATURE_NOT_IMPLEMENTED, true));
 		return true;
 	}
 }

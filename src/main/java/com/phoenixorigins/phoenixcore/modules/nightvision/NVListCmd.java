@@ -1,4 +1,4 @@
-package com.phoenixorigins.phoenixcore.commands.nightvision;
+package com.phoenixorigins.phoenixcore.modules.nightvision;
 
 import com.phoenixorigins.phoenixcore.PhoenixCore;
 import com.phoenixorigins.phoenixcore.config.PCLocale;
@@ -10,43 +10,43 @@ import java.util.Iterator;
 
 public class NVListCmd implements CommandExecutor
 {
-	private PhoenixCore plugin;
-	private boolean isEnabled;
+	private PhoenixCore pc;
+	private NightVision nvModule;
 
-	public NVListCmd(PhoenixCore plugin, boolean enabled)
+	public NVListCmd(PhoenixCore plugin, NightVision nvModule)
 	{
-		this.plugin = plugin;
-		isEnabled = enabled;
+		this.pc = plugin;
+		this.nvModule = nvModule;
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
 	{
 		/* Check if enabled */
-		if (!isEnabled)
+		if (!nvModule.isEnabled())
 		{
-			sender.sendMessage(plugin.getMessage(PCLocale.FEATURE_DISABLED, true));
+			sender.sendMessage(pc.msg(PCLocale.FEATURE_DISABLED, true));
 			return true;
 		}
 
 		/* Permission */
 		if (!sender.hasPermission("phoenixcore.nvlist"))
 		{
-			sender.sendMessage(plugin.getMessage(PCLocale.NIGHTVISION_NO_PERMISSION_LIST, true));
+			sender.sendMessage(pc.msg(PCLocale.NIGHTVISION_NO_PERMISSION_LIST, true));
 			return true;
 		}
 
 		/* List is empty */
-		if (plugin.nightVisionPlayers.isEmpty())
+		if (nvModule.getPlayers().isEmpty())
 		{
-			sender.sendMessage(plugin.getMessage(PCLocale.NIGHTVISION_NO_PLAYERS, true));
+			sender.sendMessage(pc.msg(PCLocale.NIGHTVISION_NO_PLAYERS, true));
 		}
 		else
 		{
-			sender.sendMessage(plugin.getMessage(PCLocale.NIGHTVISION_LIST, true));
+			sender.sendMessage(pc.msg(PCLocale.NIGHTVISION_LIST, true));
 
 			String list = "";
-			Iterator<String> it = plugin.nightVisionPlayers.keySet().iterator();
+			Iterator<String> it = nvModule.getPlayers().keySet().iterator();
 			do
 			{
 				list = list.concat(it.next());
@@ -57,7 +57,7 @@ public class NVListCmd implements CommandExecutor
 				}
 			}
 			while (it.hasNext());
-			sender.sendMessage(plugin.getMessage(PCLocale.NIGHTVISION_PLAYERS, false, list));
+			sender.sendMessage(pc.msg(PCLocale.NIGHTVISION_PLAYERS, false, list));
 		}
 
 		return true;

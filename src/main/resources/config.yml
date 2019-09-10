@@ -16,6 +16,7 @@ locale: en_US
 # 1 - Fake unknown command
 # 2 - Enable command (uses custom text)
 commands:
+  discord: 0
   donate: 0
   help: 0
   vote: 0
@@ -34,6 +35,9 @@ features:
   # Should launchpure be enabled?
   # Permissions: phoenixcore.launchpure.launch, phoenixcore.launchpure.toggle
   launchpure: false
+
+  # Should Zombie Pigmen that spawn from Nether Portals have collisions?
+  paranormal-pigmen: false
 
 do-not-change-this-value:
   # Do not change this value!

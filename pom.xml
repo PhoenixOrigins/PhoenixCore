@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.phoenixorigins</groupId>
+    <groupId>com.phoenixorigins.phoenixcore</groupId>
     <artifactId>PhoenixCore</artifactId>
     <version>0.1.0</version>
 
@@ -19,24 +19,17 @@
         </repository>
     </repositories>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <spigot.version>1.13.2-R0.1-SNAPSHOT</spigot.version>
-        <vault.version>1.7</vault.version>
-        <build.version>1.0.0-SNAPSHOT</build.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>${spigot.version}</version>
+            <version>1.13.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.milkbowl.vault</groupId>
             <artifactId>VaultAPI</artifactId>
-            <version>${vault.version}</version>
+            <version>1.7</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -63,8 +56,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.7.0</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>

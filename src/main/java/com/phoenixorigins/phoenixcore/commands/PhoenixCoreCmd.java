@@ -1,29 +1,32 @@
 package com.phoenixorigins.phoenixcore.commands;
 
 import com.phoenixorigins.phoenixcore.PhoenixCore;
+import com.phoenixorigins.phoenixcore.config.PCLocale;
 import com.phoenixorigins.phoenixcore.config.PCSettings;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class PhoenixCoreCmd implements CommandExecutor
 {
-	private String main1, main2, main3;
+	private PhoenixCore pc;
+	private String v, api, server;
 
-	public PhoenixCoreCmd(PhoenixCore plugin)
+	public PhoenixCoreCmd(PhoenixCore pc)
 	{
-		main1 = "&c&lPhoenix&fCore";
-		main2 = "&fv" + plugin.getDescription().getVersion() + " for MC " + plugin.getDescription().getAPIVersion();
-		main3 = "&fRunning on &3" + plugin.getMainConfig().getString(PCSettings.SERVER.getPath(), "undefined")
-				.toUpperCase() + "&f server.";
+		this.pc = pc;
+
+		v = pc.getDescription().getVersion();
+		api = pc.getDescription().getAPIVersion();
+		server = pc.getMainConfig().getString(PCSettings.SERVER.path(), "undefined").toUpperCase();
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
 	{
-		sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main1));
-		sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main2));
-		sender.sendMessage(ChatColor.translateAlternateColorCodes('&', main3));
+		sender.sendMessage(pc.msg(PCLocale.INFO1, false));
+		sender.sendMessage(pc.msg(PCLocale.INFO2, false, v, api));
+		sender.sendMessage(pc.msg(PCLocale.INFO3, false, server));
+		sender.sendMessage(pc.msg(PCLocale.INFO4, false));
 
 		return true;
 	}

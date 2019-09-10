@@ -19,11 +19,10 @@ public class HelpCmd implements CommandExecutor
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
 	{
-		sender.sendMessage(plugin.getMessage(PCLocale.FEATURE_NOT_IMPLEMENTED, true));
+		sender.sendMessage(plugin.msg(PCLocale.FEATURE_NOT_IMPLEMENTED, true));
 		if (sender.hasPermission("phoenixcore.help"))
 		{
-			String server = plugin.getMainConfig()
-					.getString(PCSettings.SERVER.getPath(), (String) PCSettings.SERVER.getDefault());
+			String server = plugin.getMainConfig().getString(PCSettings.SERVER.path(), (String) PCSettings.SERVER.def());
 		}
 		return true;
 	}

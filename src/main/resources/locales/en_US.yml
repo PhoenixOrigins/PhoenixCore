@@ -10,6 +10,10 @@ phoenixcore:
   feature-disabled: "&cThis feature is disabled!"
   must-be-player: "&cYou must be a player to execute this command!"
   feature-not-implemented: "&cThis feature is currently not implemented!"
+  info1: "&c&lPhoenix&f&lCore&f by pokeball92870 / jstnf"
+  info2: "&fv{0} for MC {1}"
+  info3: "&fRunning on &3{0}&f server."
+  info4: "&7&ohttp://dev.phoenixorigins.com/"
 
   nightvision:
     on: "&fNight vision has been toggled &aON&f!"
@@ -31,7 +35,14 @@ phoenixcore:
     help-list: "&3/nvlist&f - List all players with night vision on."
 
   launchpure:
-    null: "test"
+    too-high: "&7&oYou can't launch pure when he's already in space!"
+    not-online: "&7&oLaunch who???"
+    success: "&7&oThere he goes..."
+    notification: "&f{0} &7&olaunched pure!"
+    no-permission-launch: "&7&oYou cannot do this now..."
+    toggle-on: "&f/launchpure is now &aaccessible &fto all players."
+    toggle-off: "&f/launchpure is now &cdisabled &ffor all players."
+    no-permission-toggle: "&cYou do not have permission to toggle /launchpure!"
 
 do-not-change-this-value:
   # Do not change this value!
