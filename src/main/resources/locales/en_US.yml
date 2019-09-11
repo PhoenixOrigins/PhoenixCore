@@ -14,6 +14,7 @@ phoenixcore:
   info2: "&fv{0} for MC {1}"
   info3: "&fRunning on &3{0}&f server."
   info4: "&7&ohttp://dev.phoenixorigins.com/"
+  unknown-command: 'Unknown command. Type "/help" for help.'
 
   nightvision:
     on: "&fNight vision has been toggled &aON&f!"

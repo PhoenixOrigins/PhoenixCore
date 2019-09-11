@@ -1,5 +1,6 @@
 package com.phoenixorigins.phoenixcore;
 
+import com.phoenixorigins.phoenixcore.commands.DiscordCmd;
 import com.phoenixorigins.phoenixcore.commands.DonateCmd;
 import com.phoenixorigins.phoenixcore.commands.HelpCmd;
 import com.phoenixorigins.phoenixcore.commands.PhoenixCoreCmd;
@@ -7,6 +8,7 @@ import com.phoenixorigins.phoenixcore.commands.VoteCmd;
 import com.phoenixorigins.phoenixcore.commands.WebsiteCmd;
 import com.phoenixorigins.phoenixcore.config.PCConfig;
 import com.phoenixorigins.phoenixcore.config.PCLocale;
+import com.phoenixorigins.phoenixcore.config.PCResources;
 import com.phoenixorigins.phoenixcore.config.PCSettings;
 import com.phoenixorigins.phoenixcore.modules.launchpure.Launchpure;
 import com.phoenixorigins.phoenixcore.modules.launchpure.LaunchpureCmd;
@@ -21,6 +23,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class PhoenixCore extends JavaPlugin
 {
 	private PCConfig config;
+	private PCResources resources;
+
+	private String server;
 
 	private Launchpure lpModule;
 	private NightVision nvModule;
@@ -35,10 +40,21 @@ public class PhoenixCore extends JavaPlugin
 			return;
 		}
 
+		server = getMainConfig().getString(PCSettings.SERVER.path(), (String) PCSettings.SERVER.def());
+
 		initModules();
+		resources = new PCResources(this);
+		resources.generateFiles();
 		registerCommands();
 
 		getLogger().info("PhoenixCore loaded with following module settings:");
+		getLogger().info("Commands:");
+		getLogger().info("/discord - " + getCmdStatusFromValue(getMainConfig().getInt(PCSettings.COMMANDS_DISCORD.path(), (int) PCSettings.COMMANDS_DISCORD.def())));
+		getLogger().info("/donate - " + getCmdStatusFromValue(getMainConfig().getInt(PCSettings.COMMANDS_DONATE.path(), (int) PCSettings.COMMANDS_DONATE.def())));
+		getLogger().info("/help - " + getCmdStatusFromValue(getMainConfig().getInt(PCSettings.COMMANDS_HELP.path(), (int) PCSettings.COMMANDS_HELP.def())));
+		getLogger().info("/vote - " + getCmdStatusFromValue(getMainConfig().getInt(PCSettings.COMMANDS_VOTE.path(), (int) PCSettings.COMMANDS_VOTE.def())));
+		getLogger().info("/website - " + getCmdStatusFromValue(getMainConfig().getInt(PCSettings.COMMANDS_WEBSITE.path(), (int) PCSettings.COMMANDS_WEBSITE.def())));
+		getLogger().info("Modules:");
 		getLogger().info("Launchpure: " + lpModule.isEnabled());
 		getLogger().info("Night Vision: " + nvModule.isEnabled());
 		getLogger().info("Paranormal Pigmen: " + "TEMP! (to-do)");
@@ -59,6 +75,16 @@ public class PhoenixCore extends JavaPlugin
 	public String msg(PCLocale message, boolean usePrefix, String... args)
 	{
 		return config.getMessage(message, usePrefix, args);
+	}
+
+	public PCResources getResources()
+	{
+		return resources;
+	}
+
+	public String getConfigServer()
+	{
+		return server;
 	}
 
 	/**
@@ -95,6 +121,7 @@ public class PhoenixCore extends JavaPlugin
 	{
 		getLogger().info("Registering commands...");
 		getCommand("phoenixcore").setExecutor(new PhoenixCoreCmd(this));
+		getCommand("discord").setExecutor(new DiscordCmd(this));
 		getCommand("donate").setExecutor(new DonateCmd(this));
 		getCommand("help").setExecutor(new HelpCmd(this));
 		getCommand("launchpure").setExecutor(new LaunchpureCmd(this, lpModule));
@@ -103,5 +130,20 @@ public class PhoenixCore extends JavaPlugin
 		getCommand("togglelaunchpure").setExecutor(new TogglelaunchpureCmd(this, lpModule));
 		getCommand("vote").setExecutor(new VoteCmd(this));
 		getCommand("website").setExecutor(new WebsiteCmd(this));
+	}
+
+	private String getCmdStatusFromValue(int value)
+	{
+		switch (value)
+		{
+			case 0:
+				return "Disabled";
+			case 1:
+				return "Fake unknown command";
+			case 2:
+				return "Enabled";
+			default:
+				return "Unknown config value (" + value + ")";
+		}
 	}
 }

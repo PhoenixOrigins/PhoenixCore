@@ -13,6 +13,7 @@ public enum PCLocale
 	INFO2("phoenixcore.info2", "&fv{0} for MC {1}"),
 	INFO3("phoenixcore.info3", "&fRunning on &3{0}&f server."),
 	INFO4("phoenixcore.info4", "&7&ohttp://dev.phoenixorigins.com/"),
+	UNKNOWN_COMMAND("phoenixcore.unknown-command", "Unknown command. Type \"/help\" for help."),
 	NIGHTVISION_ON("phoenixcore.nightvision.on", "&fNight vision has been toggled &aON&f!"),
 	NIGHTVISION_OFF("phoenixcore.nightvision.off", "&fNight vision has been toggled &cOFF&f!"),
 	NIGHTVISION_ALREADY_ON("phoenixcore.nightvision.already-on", "&cYou already have night vision on!"),
