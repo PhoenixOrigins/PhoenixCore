@@ -3,6 +3,8 @@ author: jstnf
 version: 1.0.0
 main: com.phoenixorigins.phoenixcore.PhoenixCore
 
+softdepend: [FastAsyncWorldEdit]
+
 api-version: 1.13
 
 commands:

@@ -16,6 +16,8 @@ import com.phoenixorigins.phoenixcore.modules.launchpure.TogglelaunchpureCmd;
 import com.phoenixorigins.phoenixcore.modules.nightvision.NVCmd;
 import com.phoenixorigins.phoenixcore.modules.nightvision.NVListCmd;
 import com.phoenixorigins.phoenixcore.modules.nightvision.NightVision;
+import com.phoenixorigins.phoenixcore.modules.paranormalpigmen.ParanormalPigmen;
+import com.phoenixorigins.phoenixcore.modules.rainingblocks.RainingBlocks;
 import com.phoenixorigins.phoenixcore.modules.tripwire.Tripwire;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -29,6 +31,8 @@ public class PhoenixCore extends JavaPlugin
 
 	private Launchpure lpModule;
 	private NightVision nvModule;
+	private ParanormalPigmen ppModule;
+	private RainingBlocks rbModule;
 	private Tripwire twModule;
 
 	@Override
@@ -57,7 +61,9 @@ public class PhoenixCore extends JavaPlugin
 		getLogger().info("Modules:");
 		getLogger().info("Launchpure: " + lpModule.isEnabled());
 		getLogger().info("Night Vision: " + nvModule.isEnabled());
-		getLogger().info("Paranormal Pigmen: " + "TEMP! (to-do)");
+		getLogger().info("Paranormal Pigmen: " + ppModule.isEnabled());
+		getLogger().info("RainingBlocks: " + rbModule.isEnabled());
+		getLogger().info("  - List settings here (to-do)");
 		getLogger().info("Tripwire Dupe Check: " + twModule.isEnabled());
 	}
 
@@ -109,6 +115,12 @@ public class PhoenixCore extends JavaPlugin
 
 		boolean lpEnabled = getMainConfig().getBoolean(PCSettings.LAUNCHPURE.path(), (boolean) PCSettings.LAUNCHPURE.def());
 		lpModule = new Launchpure(lpEnabled);
+
+		boolean ppEnabled = getMainConfig().getBoolean(PCSettings.PARANORMAL_PIGMEN.path(), (boolean) PCSettings.PARANORMAL_PIGMEN.def());
+		ppModule = new ParanormalPigmen(this, ppEnabled);
+
+		boolean rbEnabled = getMainConfig().getBoolean(PCSettings.RAINING_BLOCKS_ENABLED.path(), (boolean) PCSettings.RAINING_BLOCKS_ENABLED.def());
+		rbModule = new RainingBlocks(this, rbEnabled);
 
 		boolean twEnabled = getMainConfig().getBoolean(PCSettings.TRIPWIRE_DUPE_CHECK.path(), (boolean) PCSettings.TRIPWIRE_DUPE_CHECK.def());
 		twModule = new Tripwire(this, twEnabled);

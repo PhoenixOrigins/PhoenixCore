@@ -1,19 +1,15 @@
 package com.phoenixorigins.phoenixcore.modules.launchpure;
 
-public class Launchpure
+import com.phoenixorigins.phoenixcore.modules.PCModule;
+
+public class Launchpure extends PCModule
 {
-	private boolean enabled;
 	private boolean launchEnabled;
 
 	public Launchpure(boolean enabled)
 	{
-		this.enabled = enabled;
+		super(enabled);
 		launchEnabled = false;
-	}
-
-	public boolean isEnabled()
-	{
-		return enabled;
 	}
 
 	public boolean isLaunchEnabled()

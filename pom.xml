@@ -17,6 +17,10 @@
             <id>vault-repo</id>
             <url>http://nexus.hc.to/content/repositories/pub_releases</url>
         </repository>
+        <repository>
+            <id>fawe-repo</id>
+            <url>https://ci.athion.net/job/FastAsyncWorldEdit-Breaking/ws/mvn</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -31,6 +35,11 @@
             <artifactId>VaultAPI</artifactId>
             <version>1.7</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.boydti</groupId>
+            <artifactId>fawe-api</artifactId>
+            <version>latest</version>
         </dependency>
     </dependencies>
 

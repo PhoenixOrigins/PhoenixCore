@@ -1,6 +1,7 @@
 package com.phoenixorigins.phoenixcore.modules.nightvision;
 
 import com.phoenixorigins.phoenixcore.PhoenixCore;
+import com.phoenixorigins.phoenixcore.modules.PCModule;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -11,14 +12,13 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.HashMap;
 
-public class NightVision implements Runnable, Listener
+public class NightVision extends PCModule implements Runnable, Listener
 {
-	private boolean enabled;
 	private HashMap<String, Player> nvPlayers;
 
 	public NightVision(PhoenixCore pc, boolean enabled)
 	{
-		this.enabled = enabled;
+		super(enabled);
 
 		if (enabled)
 		{
@@ -36,11 +36,6 @@ public class NightVision implements Runnable, Listener
 	HashMap<String, Player> getPlayers()
 	{
 		return nvPlayers;
-	}
-
-	public boolean isEnabled()
-	{
-		return enabled;
 	}
 
 	public void onDisable()

@@ -39,6 +39,30 @@ features:
   # Should Zombie Pigmen that spawn from Nether Portals have collisions?
   paranormal-pigmen: false
 
+  # Raining Blocks module - spawns blocks in the air in a certain area based on a block table
+  # You should configure this section before enabling this module!
+  raining-blocks:
+    enabled: false
+    tick-delay: 10
+    reset-delay: 24000
+    world: world
+    falling-area:
+      min-x: 0
+      min-y: 0
+      min-z: 0
+      max-x: 0
+      max-y: 0
+      max-z: 0
+    reset-area:
+      min-x: 0
+      min-y: 0
+      min-z: 0
+      max-x: 0
+      max-y: 0
+      max-z: 0
+    block-table: # MATERIAL:WEIGHT
+      - ''
+
 do-not-change-this-value:
   # Do not change this value!
   config-version: 1
